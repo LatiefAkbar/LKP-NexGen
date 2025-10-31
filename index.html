@@ -75,44 +75,80 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>Tentang Kami</h2>
-        </div>
-        <div class="about-content">
-          <div class="about-image">
-            <img src="assets/2.jpg" alt="LKP NexGen" />
+  <div class="container">
+    <div class="section-title">
+      <h2>Tentang Kami</h2>
+    </div>
+    <div class="about-content">
+      <!-- Carousel -->
+      <div class="about-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="assets/2.jpg" alt="LKP NexGen 1" />
           </div>
-          <div class="about-text">
-            <h3>Lembaga Kursus dan Pelatihan Terpercaya dan Profesional</h3>
-            <p>
-              LKP NexGen adalah LKP profesional dengan komitmen untuk memberikan
-              pendidikan dan pelatihan berkualitas tinggi yang sesuai dengan
-              kebutuhan industri.
-            </p>
-            <p>
-              Kami memiliki instruktur berpengalaman, dan kurikulum yang terus
-              diperbarui untuk memastikan peserta didik kami siap menghadapi
-              tantangan dunia kerja.
-            </p>
-            <div class="about-stats">
-              <div class="stat">
-                <span class="stat-number">1000+</span>
-                <span class="stat-text">Peserta Terlatih</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">15+</span>
-                <span class="stat-text">Program Unggulan</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">95%</span>
-                <span class="stat-text">Tingkat Kelulusan</span>
-              </div>
-            </div>
+          <div class="carousel-slide">
+            <img src="assets/modul/kd.jpg" alt="LKP NexGen 2" />
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/modul/dm.jpg" alt="LKP NexGen 3" />
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/modul/cr.jpg" alt="LKP NexGen 4" />
+          </div>
+          <div class="carousel-slide">
+            <img src="assets/modul/dg.jpg" alt="LKP NexGen 5" />
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button class="carousel-nav prev" onclick="carouselPrev()">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-nav next" onclick="carouselNext()">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <!-- Dots -->
+          <div class="carousel-controls">
+            <span class="carousel-dot active" onclick="carouselGoTo(0)"></span>
+            <span class="carousel-dot" onclick="carouselGoTo(1)"></span>
+            <span class="carousel-dot" onclick="carouselGoTo(2)"></span>
+            <span class="carousel-dot" onclick="carouselGoTo(3)"></span>
+            <span class="carousel-dot" onclick="carouselGoTo(4)"></span>
           </div>
         </div>
       </div>
-    </section>
+
+      <!-- About Text -->
+      <div class="about-text">
+        <h3>Lembaga Kursus dan Pelatihan Terpercaya dan Profesional</h3>
+        <p>
+          LKP NexGen adalah LKP profesional dengan komitmen untuk memberikan
+          pendidikan dan pelatihan berkualitas tinggi yang sesuai dengan
+          kebutuhan industri.
+        </p>
+        <p>
+          Kami memiliki instruktur berpengalaman, dan kurikulum yang terus
+          diperbarui untuk memastikan peserta didik kami siap menghadapi
+          tantangan dunia kerja.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-number">1000+</span>
+            <span class="stat-text">Peserta Terlatih</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">15+</span>
+            <span class="stat-text">Program Unggulan</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">95%</span>
+            <span class="stat-text">Tingkat Kelulusan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Programs Section -->
     <section id="programs" class="programs">
