@@ -231,6 +231,8 @@ nav {
 }
 
 .logo span {
+  
+  color: var(--yellow-primary);
   padding: clamp(3px, 1vw, 5px) clamp(8px, 2vw, 15px);
   border-radius: 50%;
   font-size: clamp(0.7rem, 1.8vw, 0.9rem);
