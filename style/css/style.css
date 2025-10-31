@@ -224,14 +224,14 @@ nav {
 
 .logo img {
   border-radius: 30px;
-  height: clamp(30px, 5vw, 40px);
+  height: clamp(60px, 5vw, 40px);
   width: auto;
   object-fit: contain;
   display: block;
 }
 
 .logo span {
-  
+  font-family: 'Nunito', sans-serif;
   color: var(--yellow-primary);
   padding: clamp(3px, 1vw, 5px) clamp(8px, 2vw, 15px);
   border-radius: 50%;
@@ -564,6 +564,7 @@ nav {
   width: 100%;
   display: flex;
   flex-direction: column;
+  container-type: inline-size;
 }
 
 .program-card::before {
@@ -590,6 +591,7 @@ nav {
   height: clamp(120px, 20vw, 200px);
   overflow: hidden;
   order: -1;
+  height: 45cqw;
 }
 
 .program-image img {
@@ -1128,6 +1130,60 @@ footer {
 
   .programs-grid {
     grid-template-columns: 1fr;
+  }
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, var(--yellow-primary), #ffed4a);
+    border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%;
+    opacity: 0.8;
+    z-index: 1;
+    animation: paint-splash-mobile 6s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--yellow-primary), #ffea00);
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+    opacity: 0.6;
+    z-index: 1;
+    animation: paint-splash-mobile-2 8s ease-in-out infinite;
+  }
+
+  @keyframes paint-splash-mobile {
+    0%, 100% {
+      border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%;
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+      transform: translate(5px, -5px) rotate(5deg);
+    }
+  }
+
+  @keyframes paint-splash-mobile-2 {
+    0%, 100% {
+      border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+      transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+      border-radius: 60% 40% 70% 30% / 40% 50% 60% 70%;
+      transform: translate(-8px, 8px) rotate(8deg);
+    }
   }
 }
 
