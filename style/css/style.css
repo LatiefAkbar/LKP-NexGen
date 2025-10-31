@@ -85,7 +85,6 @@ body::before {
   animation: float 25s infinite ease-in-out;
 }
 
-/* Animasi untuk background bercak-bercak */
 @keyframes float {
   0%,
   100% {
@@ -226,9 +225,9 @@ nav {
 
 .logo img {
   border-radius: 30px;
-  height: 48px; /* ukuran ideal desktop */
-  width: auto; /* biar proporsional */
-  object-fit: contain; /* jaga proporsi */
+  height: 48px;
+  width: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -248,6 +247,7 @@ nav {
   transition: var(--transition);
   padding: 0.5rem 0;
   position: relative;
+  font-size: 0.95rem;
 }
 
 .nav-links a:after {
@@ -285,6 +285,7 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
+  margin-top: 70px;
 }
 
 .hero-bg {
@@ -308,11 +309,9 @@ nav {
   background-position: center;
   z-index: -1;
   opacity: 0.8;
-
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
   overflow: hidden;
-
   -webkit-mask-image: linear-gradient(to left, black 70%, transparent);
   mask-image: linear-gradient(to left, black 70%, transparent);
 }
@@ -360,6 +359,7 @@ nav {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  font-size: 0.95rem;
 }
 
 .btn:before {
@@ -529,6 +529,7 @@ nav {
 
 .program-content h3 {
   margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 }
 
 .program-content p {
@@ -546,6 +547,7 @@ nav {
   color: var(--text-lighter);
   display: flex;
   align-items: center;
+  font-size: 0.9rem;
 }
 
 .program-features li i {
@@ -559,8 +561,8 @@ nav {
   position: relative;
   overflow: visible;
   width: 100%;
-  min-height: 360px; /* tinggi minimum */
-  padding-bottom: 4rem; /* space bawah aman */
+  min-height: 360px;
+  padding-bottom: 4rem;
 }
 
 .slide {
@@ -575,7 +577,7 @@ nav {
 
 .slide.active {
   opacity: 1;
-  position: absolute;
+  position: relative;
 }
 
 .testimonial-card {
@@ -619,6 +621,7 @@ nav {
   font-style: italic;
   margin-bottom: 2rem;
   position: relative;
+  font-size: 1rem;
 }
 
 .testimonial-text:before,
@@ -644,6 +647,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 .author-image {
@@ -651,8 +655,8 @@ nav {
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 1rem;
   border: 2px solid var(--accent);
+  flex-shrink: 0;
 }
 
 .author-image img {
@@ -663,6 +667,7 @@ nav {
 
 .author-info h4 {
   margin-bottom: 0.2rem;
+  font-size: 1rem;
 }
 
 .author-info p {
@@ -705,7 +710,7 @@ nav {
 }
 
 .contact-icon {
-  width: 50px; /* Ukuran tetap */
+  width: 50px;
   height: 50px;
   display: flex;
   margin-right: 20px;
@@ -714,12 +719,18 @@ nav {
   border-radius: 50%;
   background-color: var(--accent);
   color: #fff;
-  font-size: 1.3rem; /* Sesuaikan besar icon */
-  flex-shrink: 0; /* Cegah mengecil saat teks panjang */
+  font-size: 1.3rem;
+  flex-shrink: 0;
 }
 
 .contact-details h4 {
   margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-details p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
 }
 
 .contact-form {
@@ -752,6 +763,8 @@ nav {
   display: block;
   margin-bottom: 0.5rem;
   color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .form-control {
@@ -762,11 +775,14 @@ nav {
   border-radius: 4px;
   color: var(--text-light);
   transition: var(--transition);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
 }
 
 .form-control:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
 }
 
 textarea.form-control {
@@ -831,6 +847,7 @@ footer {
   transition: var(--transition);
   display: flex;
   align-items: center;
+  font-size: 0.95rem;
 }
 
 .footer-links a i {
@@ -924,452 +941,183 @@ footer {
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
+/* ============================================
+   RESPONSIVE DESIGN - DESKTOP, TABLET, MOBILE
+   ============================================ */
+
+/* ===== LARGE DESKTOP (1201px+) ===== */
+@media (min-width: 1201px) {
+  .container {
+    max-width: 1200px;
+    width: 95%;
+  }
+
+  .programs-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===== DESKTOP (993px - 1200px) ===== */
+@media (min-width: 993px) and (max-width: 1200px) {
   h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
   }
 
   h2 {
     font-size: 2.2rem;
   }
 
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .programs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-image {
+    width: 45%;
+  }
+
+  body::before {
+    opacity: 0.6;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1000px;
+  }
+}
+
+/* ===== TABLET LANDSCAPE (769px - 992px) ===== */
+@media (min-width: 769px) and (max-width: 992px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .hero {
+    height: 70vh;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    margin-right: 0.5rem;
+  }
+
   .about-content,
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .programs-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .hero-image {
     width: 40%;
   }
 
-  body::before {
-    opacity: 0.5;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: -100%;
-    width: 80%;
-    height: calc(100vh - 70px);
-    background-color: var(--navy-light);
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 3rem;
-    transition: var(--transition);
-    box-shadow: -10px 0 30px -10px rgba(2, 12, 27, 0.7);
-  }
-  .navbar-logo img {
-    height: 38px; /* versi tablet */
-  }
-
-  .nav-links.active {
-    right: 0;
-  }
-
-  .nav-links li {
-    margin: 1.5rem 0;
-  }
-
-  .mobile-menu-btn {
-    display: block;
-  }
-
-  .hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .btn-primary {
-    margin-right: 0;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1px; /* biar tidak terlalu mepet */
-  }
-
-  .hero-image {
-    width: 100%;
-    opacity: 0.4;
-  }
-
-  .hero-image:after {
-    background: linear-gradient(0deg, var(--navy) 0%, transparent 100%);
-  }
-
-  body::before {
-    opacity: 0.4;
-  }
-}
-/* ===== MOBILE FIRST ENHANCEMENTS ===== */
-
-/* Optimasi untuk layar sangat kecil (HP kecil) */
-@media (max-width: 480px) {
-  .container {
-    width: 95%;
-    padding: 0 15px;
-  }
-
-  /* Typography mobile */
-  h1 {
-    font-size: 2rem !important;
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-size: 1.8rem !important;
-    margin-bottom: 2rem;
-  }
-
-  h3 {
-    font-size: 1.4rem !important;
-  }
-
   .section-title {
     margin-bottom: 3rem;
   }
 
-  /* Header lebih kompak */
-  #header {
-    padding: 10px 0;
+  section {
+    padding: 70px 0;
+  }
+
+  body::before {
+    opacity: 0.5;
+  }
+
+  .container {
+    width: 92%;
+  }
+}
+
+/* ===== TABLET PORTRAIT (481px - 768px) ===== */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Typography */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  /* Navigation */
+  header {
+    padding: 0.8rem 0;
   }
 
   nav {
     padding: 0.8rem 0;
   }
 
+  .logo {
+    font-size: 16px;
+  }
+
   .logo img {
-    height: 35px;
+    height: 38px;
   }
 
-  .logo span {
-    font-size: 0.8rem;
-    padding: 6px 10px;
-    margin-left: 5px;
-  }
-
-  /* Hero section untuk HP */
-  .hero {
-    height: 80vh;
-    min-height: 500px;
-    margin-top: 60px;
-    text-align: center;
-  }
-
-  .hero-content {
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  .hero h1 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    line-height: 1.3;
-  }
-
-  .hero p {
-    font-size: 0.9rem;
-    margin-bottom: 25px;
-    line-height: 1.5;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .btn {
-    padding: 12px 24px;
-    font-size: 0.9rem;
-    width: 100%;
-    max-width: 250px;
-    margin: 0;
-  }
-
-  .btn-primary {
-    margin-right: 0;
-  }
-
-  .hero-image {
-    width: 100%;
-    opacity: 0.3;
-    border-radius: 0;
-    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent);
-    mask-image: linear-gradient(to bottom, black 30%, transparent);
-  }
-
-  /* About section mobile */
-  .about-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 15px;
-    margin-top: 1.5rem;
-  }
-
-  .stat-number {
-    font-size: 1.5rem;
-  }
-
-  .stat-text {
-    font-size: 0.75rem;
-  }
-
-  /* Programs grid untuk HP */
-  .programs-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem;
-  }
-
-  .program-card {
-    margin-bottom: 0;
-  }
-
-  .program-content {
-    padding: 1.2rem;
-  }
-
-  .program-content h3 {
-    font-size: 1.2rem;
-  }
-
-  .program-content p {
-    font-size: 0.85rem;
-  }
-
-  .program-features li {
-    font-size: 0.8rem;
-  }
-
-  /* Testimonials mobile */
-  .testimonials-slider {
-    min-height: 450px;
-    padding-bottom: 3rem;
-  }
-
-  .testimonial-card {
-    padding: 1.5rem;
-    margin: 0 5px;
-  }
-
-  .testimonial-text {
-    font-size: 0.85rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-
-  .testimonial-text:before,
-  .testimonial-text:after {
-    font-size: 2rem;
-  }
-
-  .testimonial-text:before {
-    top: -15px;
-    left: -5px;
-  }
-
-  .testimonial-text:after {
-    bottom: -30px;
-    right: -5px;
-  }
-
-  .testimonial-author {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .author-image {
-    margin-right: 0;
-    width: 50px;
-    height: 50px;
-  }
-
-  .author-info h4 {
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
-  }
-
-  .author-info p {
-    font-size: 0.8rem;
-  }
-
-  /* Contact section mobile */
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .contact-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 1rem 0;
-  }
-
-  .contact-icon {
-    margin-right: 0;
-    width: 45px;
-    height: 45px;
-    font-size: 1.1rem;
-  }
-
-  .contact-details h4 {
-    font-size: 1.1rem;
-  }
-
-  .contact-details p {
-    font-size: 0.9rem;
-  }
-
-  .contact-form {
-    padding: 1.5rem;
-  }
-
-  .form-group {
-    margin-bottom: 1rem;
-  }
-
-  .form-control {
-    padding: 0.8rem;
-    font-size: 16px; /* Prevent zoom on iOS */
-  }
-
-  textarea.form-control {
-    min-height: 120px;
-  }
-
-  /* Footer mobile */
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  .footer-column h3 {
-    font-size: 1.2rem;
-  }
-
-  .footer-column h3:after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .footer-links li::before {
-    display: none;
-  }
-
-  .footer-links a {
-    justify-content: center;
-    padding: 5px 0;
-  }
-
-  .social-links {
-    justify-content: center;
-  }
-
-  /* Section padding untuk mobile */
-  section {
-    padding: 60px 0;
-  }
-
-  /* Background optimization untuk mobile */
-  body::before {
-    opacity: 0.3;
-    animation-duration: 40s;
-  }
-}
-
-/* Optimasi untuk tablet kecil (481px - 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-  .programs-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .footer-content {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .testimonials-slider {
-    min-height: 400px;
-  }
-}
-
-/* Optimasi untuk tablet (768px - 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  .programs-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .footer-content {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== IMPROVEMENTS UNTUK NAVIGASI MOBILE ===== */
-@media (max-width: 768px) {
-  /* Mobile menu styling improvement */
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 65px;
     right: -100%;
     width: 280px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 65px);
     background-color: var(--navy-light);
     backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
     padding: 2rem;
     transition: var(--transition);
-    box-shadow: -10px 0 30px -10px rgba(2, 12, 27, 0.7);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
     z-index: 999;
   }
 
@@ -1381,6 +1129,7 @@ footer {
     margin: 0;
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0;
   }
 
   .nav-links li:last-child {
@@ -1389,7 +1138,282 @@ footer {
 
   .nav-links a {
     padding: 15px 0;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+  }
+
+  .nav-links a:after {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    z-index: 1000;
+  }
+
+  /* Hero */
+  .hero {
+    height: 60vh;
+    min-height: 450px;
+    margin-top: 65px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-primary {
+    margin-right: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    opacity: 0.3;
+    border-radius: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent);
+    mask-image: linear-gradient(to bottom, black 20%, transparent);
+  }
+
+  /* About */
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .about-image:before {
+    top: 10px;
+    left: 10px;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-text {
+    font-size: 0.85rem;
+  }
+
+  /* Programs */
+  .programs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .program-content {
+    padding: 1.2rem;
+  }
+
+  .program-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .program-content p {
+    font-size: 0.9rem;
+  }
+
+  /* Testimonials */
+  .testimonials-slider {
+    min-height: 400px;
+    padding-bottom: 2.5rem;
+  }
+
+  .testimonial-card {
+    padding: 1.8rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .testimonial-text:before,
+  .testimonial-text:after {
+    font-size: 2rem;
+  }
+
+  .author-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .author-info h4 {
+    font-size: 0.95rem;
+  }
+
+  /* Contact */
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-item {
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .form-control {
+    padding: 0.7rem 0.9rem;
+  }
+
+  textarea.form-control {
+    min-height: 120px;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .footer-column h3 {
     font-size: 1.1rem;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  body::before {
+    opacity: 0.4;
+  }
+
+  .container {
+    width: 93%;
+  }
+}
+
+/* ===== MOBILE (320px - 480px) ===== */
+@media (max-width: 480px) {
+  /* Base styles */
+  .container {
+    width: 95%;
+    padding: 0 12px;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1.5rem;
+  }
+
+  h2:after {
+    width: 50px;
+    bottom: -8px;
+  }
+
+  h3 {
+    font-size: 1.2rem !important;
+  }
+
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Header & Navigation */
+  header {
+    padding: 0.6rem 0;
+  }
+
+  nav {
+    padding: 0.6rem 0;
+  }
+
+  .logo {
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .logo span {
+    font-size: 0.75rem;
+    padding: 5px 8px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background-color: var(--navy-light);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    transition: right 0.3s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-left: 0;
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    font-size: 0.95rem;
     display: block;
     width: 100%;
     color: var(--text-light);
@@ -1403,30 +1427,487 @@ footer {
     display: none;
   }
 
-  /* Mobile menu button improvement */
   .mobile-menu-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     background: rgba(255, 215, 0, 0.1);
     border: 1px solid var(--accent);
     border-radius: 4px;
     z-index: 1000;
+    font-size: 1.2rem;
   }
 
-  /* Prevent body scroll when menu is open */
-  body.menu-open {
+  .mobile-menu-btn i {
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-menu-btn.active i {
+    transform: rotate(90deg);
+  }
+
+  /* Hero Section */
+  .hero {
+    height: 65vh;
+    min-height: 400px;
+    margin-top: 60px;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    text-align: center;
+    padding: 0;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero p {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+    max-width: 100%;
+  }
+
+  .accent-text {
+    display: block;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    margin: 0;
+    min-height: 44px;
+  }
+
+  .btn-primary {
+    margin-right: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    opacity: 0.25;
+    border-radius: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 15%, transparent);
+    mask-image: linear-gradient(to bottom, black 15%, transparent);
+  }
+
+  /* About Section */
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .about-image {
+    border-radius: 8px;
+  }
+
+  .about-image:before {
+    top: 8px;
+    left: 8px;
+    border: 1px solid var(--accent);
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .stat {
+    position: relative;
+  }
+
+  .stat::before {
+    width: 50px;
+    height: 50px;
+    top: -10px;
+  }
+
+  .stat-number {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-text {
+    font-size: 0.7rem;
+  }
+
+  /* Programs Section */
+  .programs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .program-card {
+    margin-bottom: 0;
+  }
+
+  .program-image {
+    height: 160px;
+  }
+
+  .program-content {
+    padding: 1rem;
+  }
+
+  .program-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .program-content p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+
+  .program-features {
+    margin-bottom: 1rem;
+  }
+
+  .program-features li {
+    font-size: 0.75rem;
+    margin-bottom: 0.4rem;
+    padding: 0.3rem 0;
+  }
+
+  .program-features li i {
+    margin-right: 6px;
+    font-size: 0.7rem;
+  }
+
+  /* Testimonials Section */
+  .testimonials-slider {
+    min-height: 380px;
+    padding-bottom: 2rem;
+  }
+
+  .slide {
+    position: relative;
+    transform: none;
+    left: 0;
+  }
+
+  .slide.active {
+    position: relative;
+  }
+
+  .testimonial-card {
+    padding: 1.2rem;
+    margin: 0 5px;
+  }
+
+  .testimonial-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    max-height: 120px;
     overflow: hidden;
   }
 
-  body.menu-open::before {
-    opacity: 0.1;
+  .testimonial-text:before,
+  .testimonial-text:after {
+    font-size: 1.5rem;
+  }
+
+  .testimonial-text:before {
+    top: -10px;
+    left: 0;
+  }
+
+  .testimonial-text:after {
+    bottom: -20px;
+    right: 0;
+  }
+
+  .testimonial-author {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .author-image {
+    width: 45px;
+    height: 45px;
+    margin-right: 0;
+    border: 2px solid var(--accent);
+  }
+
+  .author-info h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .author-info p {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+
+  /* Contact Section */
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-info {
+    gap: 1.2rem;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .contact-item::before {
+    display: none;
+  }
+
+  .contact-icon {
+    width: 42px;
+    height: 42px;
+    margin-right: 0;
+    font-size: 1rem;
+  }
+
+  .contact-details h4 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-details p {
+    font-size: 0.85rem;
+  }
+
+  .contact-form {
+    padding: 1.2rem;
+  }
+
+  .contact-form::before {
+    display: none;
+  }
+
+  .form-group {
+    margin-bottom: 0.9rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-control {
+    padding: 0.65rem 0.8rem;
+    font-size: 16px; /* Prevent iOS zoom */
+    border-radius: 4px;
+  }
+
+  textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+
+  .footer-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-column h3:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-column p {
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-links li::before {
+    display: none;
+  }
+
+  .footer-links a {
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .footer-links a i {
+    margin-right: 0;
+    margin-bottom: 0.2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .social-links a {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+    padding-top: 1.5rem;
+  }
+
+  .footer-bottom::before {
+    width: 80px;
+    height: 2px;
+  }
+
+  /* Sections */
+  section {
+    padding: 50px 0;
+  }
+
+  .section-title {
+    margin-bottom: 2rem;
+  }
+
+  /* Background optimization */
+  body::before {
+    opacity: 0.25;
+    animation-duration: 40s;
   }
 }
 
-/* ===== TOUCH-FRIENDLY IMPROVEMENTS ===== */
+/* ===== EXTRA SMALL DEVICES (< 320px) ===== */
+@media (max-width: 319px) {
+  h1 {
+    font-size: 1.4rem !important;
+  }
+
+  h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .container {
+    width: 98%;
+  }
+
+  .logo {
+    font-size: 12px;
+  }
+
+  .logo img {
+    height: 25px;
+  }
+
+  .hero {
+    min-height: 350px;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-text {
+    font-size: 0.75rem;
+  }
+
+  .nav-links {
+    width: 200px;
+  }
+}
+
+/* ===== LANDSCAPE ORIENTATION ADJUSTMENTS ===== */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    height: auto;
+    min-height: 300px;
+    margin-top: 60px;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-buttons {
+    gap: 0.4rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .nav-links {
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+/* ===== PORTRAIT ORIENTATION ADJUSTMENTS ===== */
+@media (max-width: 600px) and (orientation: portrait) {
+  .hero-image {
+    opacity: 0.15;
+  }
+
+  body::before {
+    opacity: 0.3;
+  }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
 @media (hover: none) and (pointer: coarse) {
   /* Optimasi untuk perangkat touch */
   .btn,
@@ -1441,11 +1922,7 @@ footer {
     justify-content: center;
   }
 
-  .nav-links a {
-    padding: 15px 0;
-  }
-
-  /* Hilangkan hover effects di mobile */
+  /* Hilangkan hover effects yang tidak perlu */
   .program-card:hover {
     transform: none;
   }
@@ -1461,44 +1938,25 @@ footer {
   .program-card:hover .program-image img {
     transform: none;
   }
+
+  .footer-links a:hover {
+    transform: none;
+  }
+
+  /* Tambah active state untuk touch */
+  .btn:active {
+    opacity: 0.8;
+  }
+
+  .program-card:active {
+    opacity: 0.8;
+  }
 }
 
-/* ===== PERFORMANCE OPTIMIZATIONS ===== */
-/* Mencegah layout shift pada gambar */
-.program-image,
-.about-image,
-.author-image {
-  position: relative;
-  overflow: hidden;
-}
-
-.program-image::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-}
-
-.program-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-image img,
-.author-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Smooth scrolling untuk iOS */
-@supports (-webkit-touch-callout: none) {
-  html {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+/* ===== HIGH DPI DISPLAYS (Retina, AMOLED) ===== */
+@media (min-resolution: 192dpi) and (min-width: 768px) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
   }
 }
 
@@ -1527,81 +1985,67 @@ footer {
     --navy-light: #0000a0;
     --navy-lighter: #0000c0;
   }
-}
 
-/* ===== FADE ANIMATION ENHANCEMENTS ===== */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* ===== SLIDER HEIGHT TRANSITION ===== */
-.testimonials-slider {
-  transition: height 0.3s ease;
-}
-
-/* ===== FORM OPTIMIZATIONS ===== */
-@media (max-width: 480px) {
-  .form-control:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+  .btn {
+    border-width: 2px;
   }
 }
 
-/* ===== FIX UNTUK ISSUE SPESIFIK ===== */
-/* Pastikan container tidak overflow di mobile */
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--navy);
+  }
+}
+
+/* Light mode fallback */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #f5f5f5;
+    color: var(--text-dark);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  header,
+  .mobile-menu-btn,
+  .hero-buttons {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+}
+
+/* ===== GENERAL IMPROVEMENTS ===== */
 .container {
   overflow-x: hidden;
 }
 
-/* Pastikan gambar logo tidak terlalu besar di mobile */
-@media (max-width: 480px) {
-  .logo {
-    font-size: 16px;
-  }
-
-  .logo img {
-    height: 32px;
+/* Smooth scrolling untuk semua browser */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-/* Pastikan background pattern tidak terlalu kuat di mobile */
-@media (max-width: 768px) {
-  body::before {
-    opacity: 0.4;
-    background-size: cover;
+/* Smooth iOS scrolling */
+@supports (-webkit-touch-callout: none) {
+  html {
+    -webkit-overflow-scrolling: touch;
   }
 }
 
-/* Improvement untuk button visibility */
-.btn {
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-/* Pastikan text readable di mobile */
-@media (max-width: 480px) {
-  p,
-  .stat-text,
-  .program-features li,
-  .footer-links a {
-    line-height: 1.5;
-  }
-}
-
-/* Improvement untuk mobile menu icon transition */
-.mobile-menu-btn i {
-  transition: transform 0.3s ease;
-}
-
-.mobile-menu-btn.active i {
-  transform: rotate(90deg);
-}
-
-/* Smooth height transition untuk slider */
-.testimonials-slider {
-  transition: height 0.4s ease;
+/* Loading state */
+body.menu-open {
+  overflow: hidden;
 }
 
 /* Performance improvements */
@@ -1609,32 +2053,7 @@ footer {
   will-change: opacity, transform;
 }
 
-/* Touch improvements untuk mobile */
-@media (max-width: 768px) {
-  .testimonials-slider {
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Pastikan touch targets cukup besar */
-  .btn, 
-  .nav-links a, 
-  .program-card, 
-  .social-links a {
-    min-height: 44px;
-  }
-}
-
-/* Loading state improvements */
-body.menu-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-}
-
-/* Smooth transitions untuk semua interactive elements */
-.nav-links,
-.hero-image,
 .program-card,
 .testimonial-card {
-  transition: all 0.3s ease;
+  will-change: transform;
 }
