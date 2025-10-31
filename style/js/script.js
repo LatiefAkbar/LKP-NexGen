@@ -256,13 +256,151 @@ document.addEventListener('visibilitychange', function() {
   }
 });
 
+// ========================================
+// CAROUSEL (About Section) - FIXED
+// ========================================
+let carouselCurrentSlide = 0;
+const carouselSlides = document.querySelectorAll('.carousel-slide');
+const carouselDots = document.querySelectorAll('.carousel-dot');
+const carouselPrevBtn = document.querySelector('.carousel-nav.prev');
+const carouselNextBtn = document.querySelector('.carousel-nav.next');
+const carouselTotalSlides = carouselSlides.length;
+let carouselInterval;
+
+function carouselShowSlide(index) {
+  // Validasi index
+  if (index >= carouselTotalSlides) {
+    carouselCurrentSlide = 0;
+  } else if (index < 0) {
+    carouselCurrentSlide = carouselTotalSlides - 1;
+  } else {
+    carouselCurrentSlide = index;
+  }
+
+  // Remove active class dari semua slides dan dots
+  carouselSlides.forEach(slide => {
+    slide.classList.remove('active');
+  });
+  
+  carouselDots.forEach(dot => {
+    dot.classList.remove('active');
+  });
+
+  // Add active class ke slide dan dot yang sesuai
+  if (carouselSlides[carouselCurrentSlide]) {
+    carouselSlides[carouselCurrentSlide].classList.add('active');
+  }
+  
+  if (carouselDots[carouselCurrentSlide]) {
+    carouselDots[carouselCurrentSlide].classList.add('active');
+  }
+}
+
+function carouselNext() {
+  carouselCurrentSlide = (carouselCurrentSlide + 1) % carouselTotalSlides;
+  carouselShowSlide(carouselCurrentSlide);
+}
+
+function carouselPrev() {
+  carouselCurrentSlide = (carouselCurrentSlide - 1 + carouselTotalSlides) % carouselTotalSlides;
+  carouselShowSlide(carouselCurrentSlide);
+}
+
+function carouselGoTo(index) {
+  carouselShowSlide(index);
+  carouselResetAutoPlay();
+}
+
+// Auto play carousel
+function carouselStartAutoPlay() {
+  carouselInterval = setInterval(carouselNext, 5000);
+}
+
+function carouselResetAutoPlay() {
+  clearInterval(carouselInterval);
+  carouselStartAutoPlay();
+}
+
+// Event listeners untuk carousel navigation buttons
+if (carouselPrevBtn) {
+  carouselPrevBtn.addEventListener('click', () => {
+    carouselPrev();
+    carouselResetAutoPlay();
+  });
+}
+
+if (carouselNextBtn) {
+  carouselNextBtn.addEventListener('click', () => {
+    carouselNext();
+    carouselResetAutoPlay();
+  });
+}
+
+// Event listeners untuk carousel dots
+carouselDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    carouselGoTo(index);
+  });
+});
+
+// Touch support untuk carousel
+let carouselTouchStartX = 0;
+let carouselTouchEndX = 0;
+const carouselContainer = document.querySelector('.carousel-container');
+
+function carouselHandleTouchStart(e) {
+  carouselTouchStartX = e.changedTouches[0].screenX;
+}
+
+function carouselHandleTouchEnd(e) {
+  carouselTouchEndX = e.changedTouches[0].screenX;
+  carouselHandleSwipe();
+}
+
+function carouselHandleSwipe() {
+  const swipeThreshold = 50;
+  
+  if (carouselTouchEndX < carouselTouchStartX - swipeThreshold) {
+    // Swipe kiri - next slide
+    carouselNext();
+    carouselResetAutoPlay();
+  }
+  
+  if (carouselTouchEndX > carouselTouchStartX + swipeThreshold) {
+    // Swipe kanan - prev slide
+    carouselPrev();
+    carouselResetAutoPlay();
+  }
+}
+
+// Tambahkan event listeners untuk touch pada carousel
+if (carouselContainer) {
+  carouselContainer.addEventListener('touchstart', carouselHandleTouchStart, { passive: true });
+  carouselContainer.addEventListener('touchend', carouselHandleTouchEnd, { passive: true });
+}
+
+// Pause carousel ketika tab tidak aktif
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) {
+    clearInterval(carouselInterval);
+  } else {
+    carouselResetAutoPlay();
+  }
+});
+
 // Initialize everything
 function init() {
-  // Initial slide show
-  showSlide(currentSlide);
+  // Initialize carousel
+  if (carouselSlides.length > 0) {
+    carouselShowSlide(0);
+    carouselStartAutoPlay();
+  }
   
-  // Start auto slide
-  startAutoSlide();
+  // Initial slide show untuk testimonials
+  if (slides.length > 0) {
+    showSlide(currentSlide);
+    startAutoSlide();
+  }
   
   // Initial height calculation
   updateHeight();
@@ -296,34 +434,3 @@ if (!('scrollBehavior' in document.documentElement.style)) {
     });
   });
 }
-
-let carouselCurrentSlide = 0;
-  const carouselSlides = document.querySelectorAll('.carousel-slide');
-  const carouselDots = document.querySelectorAll('.carousel-dot');
-  const carouselTotalSlides = carouselSlides.length;
-
-  function carouselShowSlide(index) {
-    carouselSlides.forEach(slide => slide.classList.remove('active'));
-    carouselDots.forEach(dot => dot.classList.remove('active'));
-
-    carouselSlides[index].classList.add('active');
-    carouselDots[index].classList.add('active');
-  }
-
-  function carouselNext() {
-    carouselCurrentSlide = (carouselCurrentSlide + 1) % carouselTotalSlides;
-    carouselShowSlide(carouselCurrentSlide);
-  }
-
-  function carouselPrev() {
-    carouselCurrentSlide = (carouselCurrentSlide - 1 + carouselTotalSlides) % carouselTotalSlides;
-    carouselShowSlide(carouselCurrentSlide);
-  }
-
-  function carouselGoTo(index) {
-    carouselCurrentSlide = index;
-    carouselShowSlide(carouselCurrentSlide);
-  }
-
-  // Auto play carousel
-  setInterval(carouselNext, 5000);
