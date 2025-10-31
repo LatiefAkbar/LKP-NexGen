@@ -1557,14 +1557,18 @@ footer {
 
   .program-card {
     margin-bottom: 0;
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .program-image {
-    height: 160px;
+    height: 180px;
+    order: 1;
   }
 
   .program-content {
     padding: 1rem;
+    order: 2;
   }
 
   .program-content h3 {
