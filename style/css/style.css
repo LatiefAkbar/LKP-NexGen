@@ -465,13 +465,13 @@ nav {
 }
 
 .carousel-slide {
+  position: absolute;  /* 🔥 INI YANG KURANG! */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-  pointer-events: none;
+  visibility: hidden;
 }
 
 .carousel-slide.active {
