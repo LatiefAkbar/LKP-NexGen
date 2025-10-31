@@ -1111,26 +1111,44 @@ footer {
     aspect-ratio: 3/2;
   }
 
+  /* Footer Mobile - Aligned to Left */
   .footer-content {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
+  }
+
+  .footer-column {
+    text-align: left;
   }
 
   .footer-links li::before {
-    display: none;
+    left: -18px;
+    display: block;
   }
 
   .footer-links a {
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .footer-column h3 {
+    text-align: left;
   }
 
   .footer-column h3:after {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
+  }
+
+  .footer-column p {
+    text-align: left;
   }
 
   .social-links {
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .footer-bottom {
+    text-align: center;
   }
 
   .testimonial-author {
