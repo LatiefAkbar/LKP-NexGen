@@ -472,7 +472,7 @@ nav {
   height: 100%;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), visibility 0.8s;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
   pointer-events: none;
 }
 
