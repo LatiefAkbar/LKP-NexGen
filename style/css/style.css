@@ -1217,11 +1217,12 @@ footer {
 
   .program-card {
     flex-direction: column;
+    display: flex;
   }
 
   .program-image {
     height: 200px;
-    order: 0;
+    order: -1;
   }
 
   .program-content {
