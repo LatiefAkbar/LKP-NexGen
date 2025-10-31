@@ -337,9 +337,10 @@ if (carouselNextBtn) {
 }
 
 // Event listeners untuk carousel dots
-carouselDots.forEach((dot, index) => {
+carouselDots.forEach((dot) => {
   dot.addEventListener('click', () => {
-    carouselGoTo(index);
+    const slideIndex = parseInt(dot.getAttribute('data-slide'));
+    carouselGoTo(slideIndex);
   });
 });
 
