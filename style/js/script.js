@@ -3,72 +3,84 @@ const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
 const navLinks = document.querySelector(".nav-links");
 const body = document.body;
 
-mobileMenuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  body.classList.toggle("menu-open");
-  
-  // Ubah icon menu menjadi X ketika aktif
-  const icon = mobileMenuBtn.querySelector('i');
-  if (navLinks.classList.contains('active')) {
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-times');
-  } else {
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  }
-});
-
-// Close mobile menu when clicking on links
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove("active");
-    body.classList.remove("menu-open");
+if (mobileMenuBtn && navLinks) {
+  mobileMenuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    body.classList.toggle("menu-open");
     
-    // Kembalikan icon ke burger
+    // Ubah icon menu menjadi X ketika aktif
     const icon = mobileMenuBtn.querySelector('i');
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
+    if (icon) {
+      if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
   });
-});
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-  const isClickInsideNav = navLinks.contains(e.target);
-  const isClickOnMenuBtn = mobileMenuBtn.contains(e.target);
-  
-  if (!isClickInsideNav && !isClickOnMenuBtn && navLinks.classList.contains('active')) {
-    navLinks.classList.remove("active");
-    body.classList.remove("menu-open");
-    
-    // Kembalikan icon ke burger
-    const icon = mobileMenuBtn.querySelector('i');
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  }
-});
+  // Close mobile menu when clicking on links
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove("active");
+      body.classList.remove("menu-open");
+      
+      // Kembalikan icon ke burger
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+  });
 
-// Close mobile menu on escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-    navLinks.classList.remove("active");
-    body.classList.remove("menu-open");
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const isClickInsideNav = navLinks.contains(e.target);
+    const isClickOnMenuBtn = mobileMenuBtn.contains(e.target);
     
-    const icon = mobileMenuBtn.querySelector('i');
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  }
-});
+    if (!isClickInsideNav && !isClickOnMenuBtn && navLinks.classList.contains('active')) {
+      navLinks.classList.remove("active");
+      body.classList.remove("menu-open");
+      
+      // Kembalikan icon ke burger
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+  });
+
+  // Close mobile menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+      navLinks.classList.remove("active");
+      body.classList.remove("menu-open");
+      
+      const icon = mobileMenuBtn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+  });
+}
 
 // Header Scroll Effect
 const header = document.getElementById("header");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    header.classList.add("header-scrolled");
-  } else {
-    header.classList.remove("header-scrolled");
-  }
-});
+if (header) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      header.classList.add("header-scrolled");
+    } else {
+      header.classList.remove("header-scrolled");
+    }
+  });
+}
 
 // Smooth Scrolling for Anchor Links dengan offset untuk mobile
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -79,11 +91,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     if (targetId === "#") return;
 
     const targetElement = document.querySelector(targetId);
-    if (targetElement) {
+    if (targetElement && header) {
       // Calculate offset based on screen size
       const headerHeight = header.offsetHeight;
       const isMobile = window.innerWidth <= 768;
-      const additionalOffset = isMobile ? 10 : 0; // Extra offset for mobile
+      const additionalOffset = isMobile ? 10 : 0;
       const targetPosition = targetElement.offsetTop - headerHeight - additionalOffset;
 
       window.scrollTo({
@@ -92,13 +104,15 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       });
 
       // Close mobile menu if open
-      if (navLinks.classList.contains('active')) {
+      if (navLinks && navLinks.classList.contains('active')) {
         navLinks.classList.remove("active");
         body.classList.remove("menu-open");
         
-        const icon = mobileMenuBtn.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
+        const icon = mobileMenuBtn?.querySelector('i');
+        if (icon) {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
       }
     }
   });
@@ -112,7 +126,7 @@ fadeElements.forEach((element) => {
   element.style.opacity = 0;
   element.style.transform = "translateY(30px)";
   element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-  element.style.willChange = "opacity, transform"; // Performance hint
+  element.style.willChange = "opacity, transform";
 });
 
 // Throttle function untuk optimasi performance
@@ -147,15 +161,20 @@ const throttledFadeIn = throttle(fadeInOnScroll, 50);
 window.addEventListener("scroll", throttledFadeIn);
 window.addEventListener("load", fadeInOnScroll);
 
-// Testimonials Slider dengan touch support
+// ========================================
+// TESTIMONIALS SLIDER
+// ========================================
 let currentSlide = 0;
 const slides = document.querySelectorAll(".slide");
 let slideInterval;
 
 function showSlide(index) {
+  if (slides.length === 0) return;
+  
   // Handle wrap-around
   if (index >= slides.length) currentSlide = 0;
-  if (index < 0) currentSlide = slides.length - 1;
+  else if (index < 0) currentSlide = slides.length - 1;
+  else currentSlide = index;
   
   slides.forEach((slide, i) => {
     slide.classList.remove("active");
@@ -177,7 +196,7 @@ function prevSlide() {
   showSlide(currentSlide);
 }
 
-// Touch support untuk slider
+// Touch support untuk testimonials slider
 let touchStartX = 0;
 let touchEndX = 0;
 const sliderContainer = document.querySelector('.testimonials-slider');
@@ -195,13 +214,11 @@ function handleSwipe() {
   const swipeThreshold = 50;
   
   if (touchEndX < touchStartX - swipeThreshold) {
-    // Swipe kiri - next slide
     nextSlide();
     resetAutoSlide();
   }
   
   if (touchEndX > touchStartX + swipeThreshold) {
-    // Swipe kanan - prev slide
     prevSlide();
     resetAutoSlide();
   }
@@ -215,7 +232,9 @@ if (sliderContainer) {
 
 // Auto slide functionality
 function startAutoSlide() {
-  slideInterval = setInterval(nextSlide, 5000);
+  if (slides.length > 0) {
+    slideInterval = setInterval(nextSlide, 5000);
+  }
 }
 
 function resetAutoSlide() {
@@ -229,7 +248,6 @@ function updateHeight() {
   const slider = document.querySelector(".testimonials-slider");
   
   if (activeSlide && slider) {
-    // Gunakan requestAnimationFrame untuk smooth transition
     requestAnimationFrame(() => {
       const activeHeight = activeSlide.offsetHeight;
       slider.style.height = activeHeight + "px";
@@ -237,45 +255,40 @@ function updateHeight() {
   }
 }
 
-// Optimized resize handler dengan debounce
-let resizeTimeout;
-function handleResize() {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    updateHeight();
-    fadeInOnScroll(); // Re-trigger animations on resize
-  }, 250);
-}
-
-// Pause auto-slide ketika tab tidak aktif
-document.addEventListener('visibilitychange', function() {
-  if (document.hidden) {
-    clearInterval(slideInterval);
-  } else {
-    resetAutoSlide();
-  }
-});
-
 // ========================================
-// CAROUSEL (About Section) - FIXED & INTEGRATED
+// CAROUSEL (About Section) - FULLY FIXED
 // ========================================
 let carouselCurrentSlide = 0;
 const carouselSlides = document.querySelectorAll('.carousel-slide');
 const carouselDots = document.querySelectorAll('.carousel-dot');
 const carouselPrevBtn = document.querySelector('.carousel-nav.prev');
 const carouselNextBtn = document.querySelector('.carousel-nav.next');
-const carouselTotalSlides = carouselSlides.length;
+const carouselContainer = document.querySelector('.carousel-container');
 let carouselInterval;
 
+console.log('Carousel Debug:', {
+  slides: carouselSlides.length,
+  dots: carouselDots.length,
+  prevBtn: !!carouselPrevBtn,
+  nextBtn: !!carouselNextBtn
+});
+
 function carouselShowSlide(index) {
-  // Validasi index
-  if (index >= carouselTotalSlides) {
+  if (carouselSlides.length === 0) {
+    console.warn('No carousel slides found');
+    return;
+  }
+
+  // Validasi dan wrap index
+  if (index >= carouselSlides.length) {
     carouselCurrentSlide = 0;
   } else if (index < 0) {
-    carouselCurrentSlide = carouselTotalSlides - 1;
+    carouselCurrentSlide = carouselSlides.length - 1;
   } else {
     carouselCurrentSlide = index;
   }
+
+  console.log('Showing carousel slide:', carouselCurrentSlide);
 
   // Remove active class dari semua slides dan dots
   carouselSlides.forEach((slide) => {
@@ -289,6 +302,7 @@ function carouselShowSlide(index) {
   // Add active class ke slide dan dot yang sesuai
   if (carouselSlides[carouselCurrentSlide]) {
     carouselSlides[carouselCurrentSlide].classList.add('active');
+    console.log('Added active class to slide', carouselCurrentSlide);
   }
   
   if (carouselDots[carouselCurrentSlide]) {
@@ -297,12 +311,12 @@ function carouselShowSlide(index) {
 }
 
 function carouselNext() {
-  carouselCurrentSlide = (carouselCurrentSlide + 1) % carouselTotalSlides;
+  carouselCurrentSlide = (carouselCurrentSlide + 1) % carouselSlides.length;
   carouselShowSlide(carouselCurrentSlide);
 }
 
 function carouselPrev() {
-  carouselCurrentSlide = (carouselCurrentSlide - 1 + carouselTotalSlides) % carouselTotalSlides;
+  carouselCurrentSlide = (carouselCurrentSlide - 1 + carouselSlides.length) % carouselSlides.length;
   carouselShowSlide(carouselCurrentSlide);
 }
 
@@ -313,7 +327,11 @@ function carouselGoTo(index) {
 
 // Auto play carousel
 function carouselStartAutoPlay() {
-  carouselInterval = setInterval(carouselNext, 5000);
+  if (carouselSlides.length > 0) {
+    clearInterval(carouselInterval);
+    carouselInterval = setInterval(carouselNext, 5000);
+    console.log('Carousel autoplay started');
+  }
 }
 
 function carouselResetAutoPlay() {
@@ -324,6 +342,7 @@ function carouselResetAutoPlay() {
 // Event listeners untuk carousel navigation buttons
 if (carouselPrevBtn) {
   carouselPrevBtn.addEventListener('click', () => {
+    console.log('Previous button clicked');
     carouselPrev();
     carouselResetAutoPlay();
   });
@@ -331,15 +350,17 @@ if (carouselPrevBtn) {
 
 if (carouselNextBtn) {
   carouselNextBtn.addEventListener('click', () => {
+    console.log('Next button clicked');
     carouselNext();
     carouselResetAutoPlay();
   });
 }
 
 // Event listeners untuk carousel dots
-carouselDots.forEach((dot) => {
+carouselDots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
     const slideIndex = parseInt(dot.getAttribute('data-slide'));
+    console.log('Dot clicked, going to slide:', slideIndex);
     carouselGoTo(slideIndex);
   });
 });
@@ -347,7 +368,6 @@ carouselDots.forEach((dot) => {
 // Touch support untuk carousel
 let carouselTouchStartX = 0;
 let carouselTouchEndX = 0;
-const carouselContainer = document.querySelector('.carousel-container');
 
 function carouselHandleTouchStart(e) {
   carouselTouchStartX = e.changedTouches[0].screenX;
@@ -380,21 +400,52 @@ if (carouselContainer) {
   carouselContainer.addEventListener('touchend', carouselHandleTouchEnd, { passive: true });
 }
 
-// Pause carousel ketika tab tidak aktif
+// Keyboard navigation untuk carousel (accessibility)
+if (carouselContainer) {
+  carouselContainer.setAttribute('tabindex', '0');
+  carouselContainer.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      carouselPrev();
+      carouselResetAutoPlay();
+    } else if (e.key === 'ArrowRight') {
+      carouselNext();
+      carouselResetAutoPlay();
+    }
+  });
+}
+
+// Pause carousel dan testimonials ketika tab tidak aktif
 document.addEventListener('visibilitychange', function() {
   if (document.hidden) {
     clearInterval(carouselInterval);
+    clearInterval(slideInterval);
   } else {
     carouselResetAutoPlay();
+    resetAutoSlide();
   }
 });
 
+// Optimized resize handler dengan debounce
+let resizeTimeout;
+function handleResize() {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    updateHeight();
+    fadeInOnScroll();
+  }, 250);
+}
+
 // Initialize everything
 function init() {
+  console.log('Initializing...');
+  
   // Initialize carousel
   if (carouselSlides.length > 0) {
+    console.log('Initializing carousel with', carouselSlides.length, 'slides');
     carouselShowSlide(0);
     carouselStartAutoPlay();
+  } else {
+    console.warn('No carousel slides found in DOM');
   }
   
   // Initial slide show untuk testimonials
@@ -414,6 +465,8 @@ function init() {
   
   // Prevent horizontal scroll on mobile
   document.body.style.overflowX = 'hidden';
+  
+  console.log('Initialization complete');
 }
 
 // Start when DOM is fully loaded
@@ -435,3 +488,23 @@ if (!('scrollBehavior' in document.documentElement.style)) {
     });
   });
 }
+
+// Debug helper - hapus di production
+window.debugCarousel = function() {
+  console.log('=== Carousel Debug Info ===');
+  console.log('Total slides:', carouselSlides.length);
+  console.log('Current slide:', carouselCurrentSlide);
+  console.log('Active slides:', document.querySelectorAll('.carousel-slide.active').length);
+  console.log('Slides with images:', document.querySelectorAll('.carousel-slide img').length);
+  
+  carouselSlides.forEach((slide, i) => {
+    const img = slide.querySelector('img');
+    console.log(`Slide ${i}:`, {
+      hasActive: slide.classList.contains('active'),
+      hasImage: !!img,
+      imageSrc: img?.src,
+      opacity: window.getComputedStyle(slide).opacity,
+      visibility: window.getComputedStyle(slide).visibility
+    });
+  });
+};
