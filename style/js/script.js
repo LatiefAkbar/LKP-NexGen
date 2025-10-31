@@ -257,7 +257,7 @@ document.addEventListener('visibilitychange', function() {
 });
 
 // ========================================
-// CAROUSEL (About Section) - FIXED
+// CAROUSEL (About Section) - FIXED & INTEGRATED
 // ========================================
 let carouselCurrentSlide = 0;
 const carouselSlides = document.querySelectorAll('.carousel-slide');
@@ -278,11 +278,11 @@ function carouselShowSlide(index) {
   }
 
   // Remove active class dari semua slides dan dots
-  carouselSlides.forEach(slide => {
+  carouselSlides.forEach((slide) => {
     slide.classList.remove('active');
   });
   
-  carouselDots.forEach(dot => {
+  carouselDots.forEach((dot) => {
     dot.classList.remove('active');
   });
 
