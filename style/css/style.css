@@ -462,7 +462,6 @@ nav {
   aspect-ratio: 4/3;
   overflow: hidden;
   background-color: var(--navy-lighter);
-  border: 2px solid red; /* TEMPORARY DEBUG */
 }
 
 .carousel-slide {
@@ -475,7 +474,6 @@ nav {
   visibility: hidden;
   transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), visibility 0.8s;
   pointer-events: none;
-  border: 2px solid blue; /* TEMPORARY DEBUG */
 }
 
 .carousel-slide.active {
@@ -483,7 +481,6 @@ nav {
   visibility: visible;
   pointer-events: auto;
   z-index: 1;
-  border: 2px solid green; /* TEMPORARY DEBUG */
 }
 
 .carousel-slide img {
@@ -491,7 +488,6 @@ nav {
   height: 100%;
   object-fit: cover;
   display: block;
-  background-color: yellow; /* TEMPORARY DEBUG */
 }
 
 .carousel-controls {
