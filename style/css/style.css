@@ -145,17 +145,16 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(10, 42, 90, 0.95);
-  backdrop-filter: blur(10px);
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
-  padding: clamp(0.8rem, 1.5vw, 1.5rem) 0;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(0.5rem, 1vw, 1rem) 0;
+  padding: 1rem 0;
 }
 
 .logo {
@@ -163,23 +162,32 @@ nav {
   align-items: center;
   gap: 8px;
   font-weight: bold;
-  font-size: clamp(14px, 3vw, 20px);
-  color: white;
+  font-size: 1.2rem;
+  color: var(--blue-primary);
   text-decoration: none;
 }
 
 .logo img {
   border-radius: 30px;
-  height: clamp(30px, 6vw, 48px);
+  height: 40px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 
+.logo span {
+  background-color: var(--yellow-primary);
+  color: var(--blue-primary);
+  padding: 5px 15px;
+  border-radius: 50%;
+  font-size: 90%;
+  font-weight: 600;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
+  gap: 2rem;
 }
 
 .nav-links li {
@@ -187,13 +195,13 @@ nav {
 }
 
 .nav-links a {
-  color: var(--text-light);
+  color: var(--text-dark);
   text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
   padding: 0.5rem 0;
   position: relative;
-  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  font-size: 0.95rem;
   display: inline-block;
 }
 
@@ -204,12 +212,12 @@ nav {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--accent);
+  background-color: var(--blue-primary);
   transition: var(--transition);
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--blue-primary);
 }
 
 .nav-links a:hover:after {
@@ -220,13 +228,71 @@ nav {
   display: none;
   background: none;
   border: none;
-  color: var(--accent);
+  color: var(--blue-primary);
   font-size: 1.5rem;
   cursor: pointer;
   min-height: 44px;
   min-width: 44px;
   align-items: center;
   justify-content: center;
+}
+
+:root {
+  --text-dark: #333;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 70px);
+    background-color: var(--navy-light);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li {
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0;
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    padding: 15px 0;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    color: var(--text-light);
+  }
+
+  .nav-links a:after {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .logo span {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
 }
 
 /* Hero Section */
