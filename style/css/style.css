@@ -145,16 +145,21 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(10, 42, 90, 0.95);
+  backdrop-filter: blur(10px);
   transition: var(--transition);
+  padding: 1rem 0;
+}
+
+header.header-scrolled {
+  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
 }
 
 .logo {
@@ -163,7 +168,7 @@ nav {
   gap: 8px;
   font-weight: bold;
   font-size: 1.2rem;
-  color: var(--blue-primary);
+  color: white;
   text-decoration: none;
 }
 
@@ -176,7 +181,7 @@ nav {
 }
 
 .logo span {
-  background-color: var(--yellow-primary);
+  background-color: var(--accent);
   color: var(--blue-primary);
   padding: 5px 15px;
   border-radius: 50%;
@@ -195,7 +200,7 @@ nav {
 }
 
 .nav-links a {
-  color: var(--text-dark);
+  color: var(--text-light);
   text-decoration: none;
   font-weight: 500;
   transition: var(--transition);
@@ -212,12 +217,12 @@ nav {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--blue-primary);
+  background-color: var(--accent);
   transition: var(--transition);
 }
 
 .nav-links a:hover {
-  color: var(--blue-primary);
+  color: var(--accent);
 }
 
 .nav-links a:hover:after {
@@ -228,7 +233,7 @@ nav {
   display: none;
   background: none;
   border: none;
-  color: var(--blue-primary);
+  color: var(--accent);
   font-size: 1.5rem;
   cursor: pointer;
   min-height: 44px;
@@ -237,17 +242,34 @@ nav {
   justify-content: center;
 }
 
-:root {
-  --text-dark: #333;
-}
-
 @media (max-width: 768px) {
+  header {
+    padding: 0.8rem 0;
+  }
+
+  nav {
+    padding: 0.6rem 0;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .logo span {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 65px;
     right: -100%;
     width: 280px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 65px);
     background-color: var(--navy-light);
     backdrop-filter: blur(20px);
     flex-direction: column;
@@ -256,6 +278,7 @@ nav {
     transition: var(--transition);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
     z-index: 999;
+    gap: 0;
   }
 
   .nav-links.active {
@@ -263,7 +286,6 @@ nav {
   }
 
   .nav-links li {
-    margin: 0;
     width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-left: 0;
@@ -287,11 +309,6 @@ nav {
 
   .mobile-menu-btn {
     display: flex;
-  }
-
-  .logo span {
-    font-size: 0.8rem;
-    padding: 5px 10px;
   }
 }
 
