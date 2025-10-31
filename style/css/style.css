@@ -1058,8 +1058,8 @@ footer {
 
   .hero-image {
     width: 100%;
-    opacity: 0.15;
-    border-radius: 0;
+    opacity: 1;
+    border-radius: 3px;
     -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent);
     mask-image: linear-gradient(to bottom, black 10%, transparent);
   }
