@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Program - LPK</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/css/style.css" />
+    <style>
+      /* Gunakan CSS yang sama persis dengan yang Anda berikan */
+      /* Saya akan tambahkan style khusus untuk halaman detail program */
+
+      /* Program Detail Hero */
+      .program-detail-hero {
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-light) 100%
+        );
+        padding: clamp(80px, 12vw, 120px) 0 clamp(50px, 8vw, 80px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .program-detail-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 215, 0, 0.15) 0%,
+          transparent 70%
+        );
+      }
+
+      .program-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 4vw, 4rem);
+        align-items: center;
+      }
+
+      .program-badge {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--navy);
+        padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1.2rem);
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+        margin-bottom: 1rem;
+      }
+
+      .program-meta {
+        display: flex;
+        gap: clamp(1rem, 2vw, 2rem);
+        margin: clamp(1rem, 2vw, 1.5rem) 0;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-lighter);
+        font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+      }
+
+      .meta-item i {
+        color: var(--accent);
+      }
+
+      .program-image-main {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .program-image-main img {
+        width: 100%;
+        height: clamp(250px, 35vw, 400px);
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      /* Program Content Sections */
+      .program-content-section {
+        padding: clamp(3rem, 6vw, 5rem) 0;
+      }
+
+      .program-tabs {
+        display: flex;
+        gap: 0;
+        background: var(--navy-light);
+        border-radius: 10px;
+        padding: 0.5rem;
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: clamp(0.8rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
+        background: transparent;
+        border: none;
+        color: var(--text-light);
+        font-weight: 500;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+        font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+      }
+
+      .tab-btn.active {
+        background: var(--accent);
+        color: var(--navy);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+        animation: fadeInUp 0.5s ease;
+      }
+
+      /* Overview Grid */
+      .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: clamp(1rem, 2vw, 1.5rem);
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+      }
+
+      .overview-card {
+        background: var(--navy-light);
+        padding: clamp(1.2rem, 2vw, 1.8rem);
+        border-radius: 10px;
+        text-align: center;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .overview-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .overview-card::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(
+          ellipse,
+          rgba(255, 215, 0, 0.2) 0%,
+          transparent 70%
+        );
+      }
+
+      .overview-icon {
+        width: clamp(50px, 8vw, 70px);
+        height: clamp(50px, 8vw, 70px);
+        background: var(--accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto clamp(1rem, 2vw, 1.2rem);
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        color: var(--navy);
+      }
+
+      /* Curriculum */
+      .curriculum-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .curriculum-item {
+        background: var(--navy-light);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .curriculum-header {
+        padding: clamp(1rem, 2vw, 1.5rem);
+        display: flex;
+        justify-content: between;
+        align-items: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .curriculum-header:hover {
+        background: var(--navy-lighter);
+      }
+
+      .curriculum-title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-grow: 1;
+      }
+
+      .curriculum-number {
+        width: clamp(30px, 6vw, 40px);
+        height: clamp(30px, 6vw, 40px);
+        background: var(--accent);
+        color: var(--navy);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: clamp(0.8rem, 1.6vw, 1rem);
+        flex-shrink: 0;
+      }
+
+      .curriculum-duration {
+        color: var(--accent);
+        font-weight: 500;
+        font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+      }
+
+      .curriculum-content {
+        padding: 0 clamp(1rem, 2vw, 1.5rem);
+        max-height: 0;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .curriculum-item.active .curriculum-content {
+        padding: clamp(1rem, 2vw, 1.5rem);
+        max-height: 500px;
+      }
+
+      .module-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.8rem;
+      }
+
+      .module-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-lighter);
+        font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+      }
+
+      .module-list li i {
+        color: var(--accent);
+        font-size: 0.8rem;
+      }
+
+      /* Instructors */
+      .instructors-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: clamp(1.5rem, 3vw, 2rem);
+      }
+
+      .instructor-card {
+        background: var(--navy-light);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .instructor-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .instructor-image {
+        width: 100%;
+        height: clamp(200px, 25vw, 250px);
+        overflow: hidden;
+      }
+
+      .instructor-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .instructor-card:hover .instructor-image img {
+        transform: scale(1.1);
+      }
+
+      .instructor-info {
+        padding: clamp(1.2rem, 2vw, 1.8rem);
+      }
+
+      .instructor-specialty {
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+      }
+
+      .instructor-bio {
+        color: var(--text-lighter);
+        margin: clamp(0.8rem, 1.5vw, 1rem) 0;
+        font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+      }
+
+      .instructor-expertise {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-top: 1rem;
+      }
+
+      .expertise-tag {
+        background: rgba(255, 215, 0, 0.1);
+        color: var(--accent);
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+      }
+
+      /* CTA Section */
+      .program-cta {
+        background: linear-gradient(
+          135deg,
+          var(--navy-light) 0%,
+          var(--navy) 100%
+        );
+        padding: clamp(3rem, 6vw, 5rem) 0;
+        text-align: center;
+        position: relative;
+      }
+
+      .program-cta::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          ellipse at 50% 50%,
+          rgba(255, 215, 0, 0.1) 0%,
+          transparent 60%
+        );
+      }
+
+      .cta-content {
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: clamp(1rem, 2vw, 1.5rem);
+        justify-content: center;
+        margin-top: clamp(1.5rem, 3vw, 2.5rem);
+        flex-wrap: wrap;
+      }
+
+      .btn-large {
+        padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+        font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .program-header {
+          grid-template-columns: 1fr;
+          gap: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .program-meta {
+          justify-content: center;
+        }
+
+        .tab-btn {
+          min-width: 100px;
+          flex: none;
+        }
+
+        .overview-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .instructors-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn-large {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .program-tabs {
+          flex-direction: column;
+        }
+
+        .tab-btn {
+          width: 100%;
+        }
+
+        .curriculum-title {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .module-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* Header Back Button Style */
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: clamp(0.5rem, 1.2vw, 0.7rem) clamp(0.8rem, 1.8vw, 1.2rem);
+        background-color: transparent;
+        color: var(--text-light);
+        border: 1px solid var(--navy-lighter);
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+        cursor: pointer;
+        font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+        min-height: 44px;
+      }
+
+      .btn-back:hover {
+        background-color: var(--navy-lighter);
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .btn-back i {
+        font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+      }
+
+      .header-title h2 {
+        color: var(--white);
+        font-size: clamp(1rem, 2.2vw, 1.4rem);
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .header-title h2:after {
+        display: none;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      /* Adjust navigation layout for new header */
+      nav {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: clamp(1rem, 2vw, 2rem);
+        align-items: center;
+        padding: clamp(0.5rem, 1vw, 0.8rem) 0;
+      }
+
+      .logo {
+        margin-left: auto;
+      }
+
+      /* Mobile responsive for new header */
+      @media (max-width: 768px) {
+        nav {
+          grid-template-columns: auto 1fr;
+          gap: clamp(0.8rem, 1.5vw, 1.2rem);
+        }
+
+        .header-title {
+          grid-column: 1 / -1;
+          text-align: center;
+          order: -1;
+        }
+
+        .header-actions {
+          justify-self: end;
+        }
+
+        .logo span {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .btn-back {
+          padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.2vw, 0.8rem);
+          font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+        }
+
+        .btn-back span {
+          display: none;
+        }
+
+        .btn-back i {
+          margin-right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <a href="javascript:history.back()" class="btn btn-back">
+            <i class="fas fa-arrow-left"></i>
+            Kembali
+          </a>
+          <div class="header-title">
+            <h2>Detail Program</h2>
+          </div>
+          <div class="header-actions">
+            <a href="#" class="logo">
+              <img src="assets/logo.png" alt="LPK Logo" />
+              <span>LKP NEXGEN</span>
+            </a>
+            <button class="mobile-menu-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- Program Detail Hero -->
+    <section class="program-detail-hero">
+      <div class="container">
+        <div class="program-header">
+          <div class="program-info">
+            <span class="program-badge">Program Unggulan</span>
+            <h1>Digital Marketing Professional</h1>
+            <p class="accent-text">
+              Master the art of digital marketing with comprehensive training
+              from industry experts
+            </p>
+
+            <div class="program-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>6 Bulan</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Max 25 Peserta</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Level: Advanced</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-certificate"></i>
+                <span>Sertifikasi BNSP</span>
+              </div>
+            </div>
+
+            <div class="hero-buttons">
+              <a href="#daftar" class="btn btn-primary">Daftar Sekarang</a>
+              <a href="#kurikulum" class="btn">Lihat Kurikulum</a>
+            </div>
+          </div>
+
+          <div class="program-image-main">
+            <img
+              src="assets/modul/digital-marketing.jpeg"
+              alt="Digital Marketing Program"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Content -->
+    <section class="program-content-section">
+      <div class="container">
+        <div class="program-tabs">
+          <button class="tab-btn active" data-tab="overview">Overview</button>
+          <button class="tab-btn" data-tab="curriculum">Kurikulum</button>
+          <button class="tab-btn" data-tab="instructors">Instruktur</button>
+          <button class="tab-btn" data-tab="facilities">Fasilitas</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div class="tab-content active" id="overview">
+          <div class="overview-grid">
+            <div class="overview-card">
+              <div class="overview-icon">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h3>Tujuan Program</h3>
+              <p>
+                Mencetak digital marketing professional yang siap bekerja di
+                industri dengan skill terupdate
+              </p>
+            </div>
+            <div class="overview-card">
+              <div class="overview-icon">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <h3>Target Peserta</h3>
+              <p>
+                Fresh graduate, career switcher, dan professional yang ingin
+                upgrade skill digital marketing
+              </p>
+            </div>
+            <div class="overview-card">
+              <div class="overview-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Prospek Karir</h3>
+              <p>
+                Digital Marketing Specialist, Social Media Manager, SEO
+                Specialist, Content Strategist
+              </p>
+            </div>
+            <div class="overview-card">
+              <div class="overview-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <h3>Sertifikasi</h3>
+              <p>
+                BNSP, Google Digital Garage, Meta Blueprint, dan sertifikasi
+                internal LPK
+              </p>
+            </div>
+          </div>
+
+          <div class="about-text">
+            <h3>Tentang Program Ini</h3>
+            <p>
+              Program Digital Marketing Professional dirancang untuk memberikan
+              pemahaman komprehensif tentang strategi pemasaran digital terkini.
+              Peserta akan belajar dari dasar hingga advanced techniques dengan
+              pendekatan praktis dan project-based learning.
+            </p>
+
+            <h3>Keunggulan Program</h3>
+            <ul class="program-features">
+              <li>
+                <i class="fas fa-check"></i> Kurikulum berbasis industri terkini
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Instruktur praktisi berpengalaman
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Project-based learning dengan studi
+                kasus nyata
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Career coaching dan job connection
+              </li>
+              <li><i class="fas fa-check"></i> Akses materi seumur hidup</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Curriculum Tab -->
+        <div class="tab-content" id="curriculum">
+          <h2 class="section-title">Kurikulum Lengkap</h2>
+          <div class="curriculum-list">
+            <!-- Module 1 -->
+            <div class="curriculum-item">
+              <div class="curriculum-header">
+                <div class="curriculum-title">
+                  <div class="curriculum-number">1</div>
+                  <div>
+                    <h4>Foundation of Digital Marketing</h4>
+                    <p>Pemahaman dasar konsep dan strategi digital marketing</p>
+                  </div>
+                </div>
+                <div class="curriculum-duration">4 Minggu</div>
+              </div>
+              <div class="curriculum-content">
+                <ul class="module-list">
+                  <li>
+                    <i class="fas fa-play"></i> Introduction to Digital
+                    Marketing
+                  </li>
+                  <li>
+                    <i class="fas fa-play"></i> Consumer Behavior in Digital Era
+                  </li>
+                  <li>
+                    <i class="fas fa-play"></i> Digital Marketing Strategy
+                  </li>
+                  <li>
+                    <i class="fas fa-play"></i> Marketing Funnel & Customer
+                    Journey
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="curriculum-item">
+              <div class="curriculum-header">
+                <div class="curriculum-title">
+                  <div class="curriculum-number">2</div>
+                  <div>
+                    <h4>Content Marketing & SEO</h4>
+                    <p>Strategi konten dan optimasi mesin pencari</p>
+                  </div>
+                </div>
+                <div class="curriculum-duration">6 Minggu</div>
+              </div>
+              <div class="curriculum-content">
+                <ul class="module-list">
+                  <li>
+                    <i class="fas fa-play"></i> Content Strategy Development
+                  </li>
+                  <li>
+                    <i class="fas fa-play"></i> SEO Fundamentals & Advanced
+                  </li>
+                  <li>
+                    <i class="fas fa-play"></i> Keyword Research & Analysis
+                  </li>
+                  <li>
+                    <i class="fas fa-play"></i> Content Writing & Optimization
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Add more modules as needed -->
+          </div>
+        </div>
+
+        <!-- Instructors Tab -->
+        <div class="tab-content" id="instructors">
+          <h2 class="section-title">Tim Instruktur</h2>
+          <div class="instructors-grid">
+            <div class="instructor-card">
+              <div class="instructor-image">
+                <img src="assets/instructor1.jpg" alt="Instruktur 1" />
+              </div>
+              <div class="instructor-info">
+                <h3>Ahmad Wijaya</h3>
+                <div class="instructor-specialty">
+                  Head of Digital Marketing
+                </div>
+                <p class="instructor-bio">
+                  12+ tahun pengalaman di digital marketing, sebelumnya bekerja
+                  di unicorn startup Indonesia
+                </p>
+                <div class="instructor-expertise">
+                  <span class="expertise-tag">SEO</span>
+                  <span class="expertise-tag">Content Strategy</span>
+                  <span class="expertise-tag">Analytics</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="instructor-card">
+              <div class="instructor-image">
+                <img src="assets/instructor2.jpg" alt="Instruktur 2" />
+              </div>
+              <div class="instructor-info">
+                <h3>Sarah Santoso</h3>
+                <div class="instructor-specialty">Social Media Expert</div>
+                <p class="instructor-bio">
+                  Spesialis social media marketing dengan portfolio client
+                  Fortune 500 companies
+                </p>
+                <div class="instructor-expertise">
+                  <span class="expertise-tag">Social Media</span>
+                  <span class="expertise-tag">PPC</span>
+                  <span class="expertise-tag">Branding</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="program-cta" id="daftar">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Siap Memulai Karir Digital Marketing?</h2>
+          <p>
+            Bergabunglah dengan ratusan alumni yang telah sukses berkarir di
+            industri digital
+          </p>
+          <div class="cta-buttons">
+            <a href="#" class="btn btn-primary btn-large">Daftar Sekarang</a>
+            <a href="#" class="btn btn-large">Konsultasi Gratis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (sama seperti halaman utama) -->
+    <footer>
+      <!-- Footer content from main page -->
+    </footer>
+
+    <script>
+      // Tab Navigation
+      document.querySelectorAll(".tab-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons and contents
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((content) => content.classList.remove("active"));
+
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          // Show corresponding content
+          const tabId = button.getAttribute("data-tab");
+          document.getElementById(tabId).classList.add("active");
+        });
+      });
+
+      // Curriculum Accordion
+      document.querySelectorAll(".curriculum-header").forEach((header) => {
+        header.addEventListener("click", () => {
+          const item = header.parentElement;
+          item.classList.toggle("active");
+        });
+      });
+
+      // Mobile Menu (same as main page)
+      document
+        .querySelector(".mobile-menu-btn")
+        .addEventListener("click", function () {
+          document.querySelector(".nav-links").classList.toggle("active");
+          document.body.classList.toggle("menu-open");
+        });
+    </script>
+  </body>
+</html>
