@@ -73,8 +73,8 @@
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+   <!-- About Section -->
+<section id="about" class="about">
   <div class="container">
     <div class="section-title">
       <h2>Tentang Kami</h2>
@@ -83,37 +83,42 @@
       <!-- Carousel -->
       <div class="about-carousel">
         <div class="carousel-container">
+          <!-- Slide 1 -->
           <div class="carousel-slide active">
             <img src="assets/2.jpg" alt="LKP NexGen 1" />
           </div>
+          <!-- Slide 2 -->
           <div class="carousel-slide">
             <img src="assets/modul/kd.jpg" alt="LKP NexGen 2" />
           </div>
+          <!-- Slide 3 -->
           <div class="carousel-slide">
             <img src="assets/modul/dm.jpg" alt="LKP NexGen 3" />
           </div>
+          <!-- Slide 4 -->
           <div class="carousel-slide">
             <img src="assets/modul/cr.jpg" alt="LKP NexGen 4" />
           </div>
+          <!-- Slide 5 -->
           <div class="carousel-slide">
             <img src="assets/modul/dg.jpg" alt="LKP NexGen 5" />
           </div>
 
-          <!-- Navigation Arrows -->
-          <button class="carousel-nav prev" onclick="carouselPrev()">
+          <!-- Navigation Arrows - HAPUS onclick, sudah di handle di JS -->
+          <button class="carousel-nav prev" aria-label="Previous Slide">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="carousel-nav next" onclick="carouselNext()">
+          <button class="carousel-nav next" aria-label="Next Slide">
             <i class="fas fa-chevron-right"></i>
           </button>
 
-          <!-- Dots -->
+          <!-- Dots - HAPUS onclick, sudah di handle di JS -->
           <div class="carousel-controls">
-            <span class="carousel-dot active" onclick="carouselGoTo(0)"></span>
-            <span class="carousel-dot" onclick="carouselGoTo(1)"></span>
-            <span class="carousel-dot" onclick="carouselGoTo(2)"></span>
-            <span class="carousel-dot" onclick="carouselGoTo(3)"></span>
-            <span class="carousel-dot" onclick="carouselGoTo(4)"></span>
+            <span class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></span>
+            <span class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></span>
+            <span class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></span>
+            <span class="carousel-dot" data-slide="3" aria-label="Go to slide 4"></span>
+            <span class="carousel-dot" data-slide="4" aria-label="Go to slide 5"></span>
           </div>
         </div>
       </div>
