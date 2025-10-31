@@ -8,7 +8,6 @@ if (mobileMenuBtn && navLinks) {
     navLinks.classList.toggle("active");
     body.classList.toggle("menu-open");
     
-    // Ubah icon menu menjadi X ketika aktif
     const icon = mobileMenuBtn.querySelector('i');
     if (icon) {
       if (navLinks.classList.contains('active')) {
@@ -21,13 +20,11 @@ if (mobileMenuBtn && navLinks) {
     }
   });
 
-  // Close mobile menu when clicking on links
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove("active");
       body.classList.remove("menu-open");
       
-      // Kembalikan icon ke burger
       const icon = mobileMenuBtn.querySelector('i');
       if (icon) {
         icon.classList.remove('fa-times');
@@ -36,7 +33,6 @@ if (mobileMenuBtn && navLinks) {
     });
   });
 
-  // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
     const isClickInsideNav = navLinks.contains(e.target);
     const isClickOnMenuBtn = mobileMenuBtn.contains(e.target);
@@ -45,7 +41,6 @@ if (mobileMenuBtn && navLinks) {
       navLinks.classList.remove("active");
       body.classList.remove("menu-open");
       
-      // Kembalikan icon ke burger
       const icon = mobileMenuBtn.querySelector('i');
       if (icon) {
         icon.classList.remove('fa-times');
@@ -54,7 +49,6 @@ if (mobileMenuBtn && navLinks) {
     }
   });
 
-  // Close mobile menu on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navLinks.classList.contains('active')) {
       navLinks.classList.remove("active");
@@ -82,7 +76,7 @@ if (header) {
   });
 }
 
-// Smooth Scrolling for Anchor Links dengan offset untuk mobile
+// Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -92,7 +86,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
     const targetElement = document.querySelector(targetId);
     if (targetElement && header) {
-      // Calculate offset based on screen size
       const headerHeight = header.offsetHeight;
       const isMobile = window.innerWidth <= 768;
       const additionalOffset = isMobile ? 10 : 0;
@@ -103,7 +96,6 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         behavior: "smooth",
       });
 
-      // Close mobile menu if open
       if (navLinks && navLinks.classList.contains('active')) {
         navLinks.classList.remove("active");
         body.classList.remove("menu-open");
@@ -118,10 +110,9 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Animation on Scroll dengan throttling untuk performance
+// Animation on Scroll
 const fadeElements = document.querySelectorAll(".fade-in-up");
 
-// Set initial state for fade elements
 fadeElements.forEach((element) => {
   element.style.opacity = 0;
   element.style.transform = "translateY(30px)";
@@ -129,7 +120,6 @@ fadeElements.forEach((element) => {
   element.style.willChange = "opacity, transform";
 });
 
-// Throttle function untuk optimasi performance
 function throttle(func, limit) {
   let inThrottle;
   return function() {
@@ -155,7 +145,6 @@ const fadeInOnScroll = () => {
   });
 };
 
-// Gunakan throttled version untuk scroll event
 const throttledFadeIn = throttle(fadeInOnScroll, 50);
 
 window.addEventListener("scroll", throttledFadeIn);
@@ -171,7 +160,6 @@ let slideInterval;
 function showSlide(index) {
   if (slides.length === 0) return;
   
-  // Handle wrap-around
   if (index >= slides.length) currentSlide = 0;
   else if (index < 0) currentSlide = slides.length - 1;
   else currentSlide = index;
@@ -196,7 +184,6 @@ function prevSlide() {
   showSlide(currentSlide);
 }
 
-// Touch support untuk testimonials slider
 let touchStartX = 0;
 let touchEndX = 0;
 const sliderContainer = document.querySelector('.testimonials-slider');
@@ -224,13 +211,11 @@ function handleSwipe() {
   }
 }
 
-// Tambahkan event listeners untuk touch
 if (sliderContainer) {
   sliderContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
   sliderContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
 }
 
-// Auto slide functionality
 function startAutoSlide() {
   if (slides.length > 0) {
     slideInterval = setInterval(nextSlide, 5000);
@@ -242,7 +227,6 @@ function resetAutoSlide() {
   startAutoSlide();
 }
 
-// Height calculation untuk testimonials slider
 function updateHeight() {
   const activeSlide = document.querySelector(".slide.active");
   const slider = document.querySelector(".testimonials-slider");
@@ -256,7 +240,7 @@ function updateHeight() {
 }
 
 // ========================================
-// CAROUSEL (About Section) - FULLY FIXED
+// CAROUSEL (About Section) - COMPLETELY FIXED
 // ========================================
 let carouselCurrentSlide = 0;
 const carouselSlides = document.querySelectorAll('.carousel-slide');
@@ -266,20 +250,14 @@ const carouselNextBtn = document.querySelector('.carousel-nav.next');
 const carouselContainer = document.querySelector('.carousel-container');
 let carouselInterval;
 
-console.log('Carousel Debug:', {
-  slides: carouselSlides.length,
-  dots: carouselDots.length,
-  prevBtn: !!carouselPrevBtn,
-  nextBtn: !!carouselNextBtn
-});
-
+// CRITICAL FIX: Force display styles
 function carouselShowSlide(index) {
   if (carouselSlides.length === 0) {
-    console.warn('No carousel slides found');
+    console.error('❌ No carousel slides found!');
     return;
   }
 
-  // Validasi dan wrap index
+  // Wrap index
   if (index >= carouselSlides.length) {
     carouselCurrentSlide = 0;
   } else if (index < 0) {
@@ -288,25 +266,38 @@ function carouselShowSlide(index) {
     carouselCurrentSlide = index;
   }
 
-  console.log('Showing carousel slide:', carouselCurrentSlide);
+  console.log('🎠 Showing carousel slide:', carouselCurrentSlide);
 
-  // Remove active class dari semua slides dan dots
-  carouselSlides.forEach((slide) => {
+  // FORCE HIDE ALL SLIDES FIRST
+  carouselSlides.forEach((slide, i) => {
     slide.classList.remove('active');
+    // Force hide dengan inline style sebagai backup
+    slide.style.opacity = '0';
+    slide.style.visibility = 'hidden';
+    slide.style.zIndex = '0';
   });
   
+  // FORCE HIDE ALL DOTS
   carouselDots.forEach((dot) => {
     dot.classList.remove('active');
   });
 
-  // Add active class ke slide dan dot yang sesuai
-  if (carouselSlides[carouselCurrentSlide]) {
-    carouselSlides[carouselCurrentSlide].classList.add('active');
-    console.log('Added active class to slide', carouselCurrentSlide);
+  // FORCE SHOW ACTIVE SLIDE
+  const activeSlide = carouselSlides[carouselCurrentSlide];
+  if (activeSlide) {
+    activeSlide.classList.add('active');
+    // Force show dengan inline style
+    activeSlide.style.opacity = '1';
+    activeSlide.style.visibility = 'visible';
+    activeSlide.style.zIndex = '1';
+    
+    console.log('✅ Active slide:', carouselCurrentSlide, activeSlide.querySelector('img')?.src);
   }
   
-  if (carouselDots[carouselCurrentSlide]) {
-    carouselDots[carouselCurrentSlide].classList.add('active');
+  // ACTIVATE DOT
+  const activeDot = carouselDots[carouselCurrentSlide];
+  if (activeDot) {
+    activeDot.classList.add('active');
   }
 }
 
@@ -325,12 +316,11 @@ function carouselGoTo(index) {
   carouselResetAutoPlay();
 }
 
-// Auto play carousel
 function carouselStartAutoPlay() {
   if (carouselSlides.length > 0) {
     clearInterval(carouselInterval);
     carouselInterval = setInterval(carouselNext, 5000);
-    console.log('Carousel autoplay started');
+    console.log('▶️ Carousel autoplay started');
   }
 }
 
@@ -339,10 +329,10 @@ function carouselResetAutoPlay() {
   carouselStartAutoPlay();
 }
 
-// Event listeners untuk carousel navigation buttons
+// Navigation buttons
 if (carouselPrevBtn) {
   carouselPrevBtn.addEventListener('click', () => {
-    console.log('Previous button clicked');
+    console.log('⬅️ Previous clicked');
     carouselPrev();
     carouselResetAutoPlay();
   });
@@ -350,22 +340,22 @@ if (carouselPrevBtn) {
 
 if (carouselNextBtn) {
   carouselNextBtn.addEventListener('click', () => {
-    console.log('Next button clicked');
+    console.log('➡️ Next clicked');
     carouselNext();
     carouselResetAutoPlay();
   });
 }
 
-// Event listeners untuk carousel dots
+// Dots navigation
 carouselDots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
     const slideIndex = parseInt(dot.getAttribute('data-slide'));
-    console.log('Dot clicked, going to slide:', slideIndex);
+    console.log('🔵 Dot clicked, going to slide:', slideIndex);
     carouselGoTo(slideIndex);
   });
 });
 
-// Touch support untuk carousel
+// Touch support
 let carouselTouchStartX = 0;
 let carouselTouchEndX = 0;
 
@@ -382,26 +372,21 @@ function carouselHandleSwipe() {
   const swipeThreshold = 50;
   
   if (carouselTouchEndX < carouselTouchStartX - swipeThreshold) {
-    // Swipe kiri - next slide
     carouselNext();
     carouselResetAutoPlay();
   }
   
   if (carouselTouchEndX > carouselTouchStartX + swipeThreshold) {
-    // Swipe kanan - prev slide
     carouselPrev();
     carouselResetAutoPlay();
   }
 }
 
-// Tambahkan event listeners untuk touch pada carousel
 if (carouselContainer) {
   carouselContainer.addEventListener('touchstart', carouselHandleTouchStart, { passive: true });
   carouselContainer.addEventListener('touchend', carouselHandleTouchEnd, { passive: true });
-}
-
-// Keyboard navigation untuk carousel (accessibility)
-if (carouselContainer) {
+  
+  // Keyboard navigation
   carouselContainer.setAttribute('tabindex', '0');
   carouselContainer.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
@@ -414,7 +399,7 @@ if (carouselContainer) {
   });
 }
 
-// Pause carousel dan testimonials ketika tab tidak aktif
+// Pause when tab hidden
 document.addEventListener('visibilitychange', function() {
   if (document.hidden) {
     clearInterval(carouselInterval);
@@ -425,7 +410,7 @@ document.addEventListener('visibilitychange', function() {
   }
 });
 
-// Optimized resize handler dengan debounce
+// Resize handler
 let resizeTimeout;
 function handleResize() {
   clearTimeout(resizeTimeout);
@@ -435,48 +420,48 @@ function handleResize() {
   }, 250);
 }
 
-// Initialize everything
+// Initialize
 function init() {
-  console.log('Initializing...');
+  console.log('🚀 Initializing...');
   
-  // Initialize carousel
+  // Carousel initialization
   if (carouselSlides.length > 0) {
-    console.log('Initializing carousel with', carouselSlides.length, 'slides');
+    console.log('🎠 Found', carouselSlides.length, 'carousel slides');
+    
+    // Log all images
+    carouselSlides.forEach((slide, i) => {
+      const img = slide.querySelector('img');
+      console.log(`Slide ${i}:`, img?.src || 'NO IMAGE');
+    });
+    
     carouselShowSlide(0);
     carouselStartAutoPlay();
   } else {
-    console.warn('No carousel slides found in DOM');
+    console.error('❌ No carousel slides found in DOM!');
   }
   
-  // Initial slide show untuk testimonials
+  // Testimonials
   if (slides.length > 0) {
     showSlide(currentSlide);
     startAutoSlide();
   }
   
-  // Initial height calculation
   updateHeight();
-  
-  // Initial fade in check
   fadeInOnScroll();
-  
-  // Add resize listener
   window.addEventListener("resize", handleResize);
-  
-  // Prevent horizontal scroll on mobile
   document.body.style.overflowX = 'hidden';
   
-  console.log('Initialization complete');
+  console.log('✅ Initialization complete');
 }
 
-// Start when DOM is fully loaded
+// Start
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {
   init();
 }
 
-// Fallback untuk browsers yang tidak support smooth scrolling
+// Smooth scroll fallback
 if (!('scrollBehavior' in document.documentElement.style)) {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -489,22 +474,30 @@ if (!('scrollBehavior' in document.documentElement.style)) {
   });
 }
 
-// Debug helper - hapus di production
+// Debug helper
 window.debugCarousel = function() {
-  console.log('=== Carousel Debug Info ===');
+  console.log('=== 🔍 CAROUSEL DEBUG ===');
   console.log('Total slides:', carouselSlides.length);
   console.log('Current slide:', carouselCurrentSlide);
   console.log('Active slides:', document.querySelectorAll('.carousel-slide.active').length);
-  console.log('Slides with images:', document.querySelectorAll('.carousel-slide img').length);
   
   carouselSlides.forEach((slide, i) => {
     const img = slide.querySelector('img');
+    const computed = window.getComputedStyle(slide);
     console.log(`Slide ${i}:`, {
       hasActive: slide.classList.contains('active'),
-      hasImage: !!img,
+      opacity: computed.opacity,
+      visibility: computed.visibility,
+      zIndex: computed.zIndex,
+      display: computed.display,
       imageSrc: img?.src,
-      opacity: window.getComputedStyle(slide).opacity,
-      visibility: window.getComputedStyle(slide).visibility
+      imageLoaded: img?.complete
     });
   });
+};
+
+// Manual slide changer untuk testing
+window.goToSlide = function(index) {
+  console.log('🎯 Manually going to slide:', index);
+  carouselShowSlide(index);
 };
