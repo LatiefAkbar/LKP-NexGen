@@ -296,3 +296,34 @@ if (!('scrollBehavior' in document.documentElement.style)) {
     });
   });
 }
+
+let carouselCurrentSlide = 0;
+  const carouselSlides = document.querySelectorAll('.carousel-slide');
+  const carouselDots = document.querySelectorAll('.carousel-dot');
+  const carouselTotalSlides = carouselSlides.length;
+
+  function carouselShowSlide(index) {
+    carouselSlides.forEach(slide => slide.classList.remove('active'));
+    carouselDots.forEach(dot => dot.classList.remove('active'));
+
+    carouselSlides[index].classList.add('active');
+    carouselDots[index].classList.add('active');
+  }
+
+  function carouselNext() {
+    carouselCurrentSlide = (carouselCurrentSlide + 1) % carouselTotalSlides;
+    carouselShowSlide(carouselCurrentSlide);
+  }
+
+  function carouselPrev() {
+    carouselCurrentSlide = (carouselCurrentSlide - 1 + carouselTotalSlides) % carouselTotalSlides;
+    carouselShowSlide(carouselCurrentSlide);
+  }
+
+  function carouselGoTo(index) {
+    carouselCurrentSlide = index;
+    carouselShowSlide(carouselCurrentSlide);
+  }
+
+  // Auto play carousel
+  setInterval(carouselNext, 5000);
