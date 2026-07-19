@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  {{ partial "head.html" . }}
+
+  <!-- Latar belakang off-white super lembut agar tidak kontras tajam -->
+  <body
+    class="bg-[#f8fafc] text-slate-800 font-sans antialiased selection:bg-[#FFC700] selection:text-[#001D4B]"
+  >
+    <!-- 1. NAVIGATION BAR -->
+    <header
+      class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-slate-200/60 shadow-sm shadow-slate-100/40"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-8 h-24 flex items-center justify-between"
+      >
+        <!-- Brand / Logo (Ukuran h-16 proporsional agar teks terbaca jelas) -->
+        <a href="#" class="flex items-center">
+          <img
+            src="/images/logo.png"
+            alt="LKP NexGen Logo"
+            class="h-28 w-auto object-contain"
+          />
+        </a>
+
+        <!-- Menu Utama -->
+        <nav
+          class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-600"
+        >
+          <a href="#program" class="hover:text-[#001D4B] transition-colors"
+            >Program</a
+          >
+          <a href="#fasilitas" class="hover:text-[#001D4B] transition-colors"
+            >Fasilitas</a
+          >
+          <a href="#tentang" class="hover:text-[#001D4B] transition-colors"
+            >Tentang Kami</a
+          >
+        </nav>
+
+        <!-- CTA Button -->
+        <div class="hidden md:flex items-center">
+          <a
+            href="#kontak"
+            class="text-sm font-bold bg-[#001D4B] hover:bg-blue-900 text-white px-5 py-2.5 rounded-xl transition shadow-md shadow-[#001D4B]/10"
+          >
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 2. HERO SECTION -->
+      <section
+        class="max-w-7xl mx-auto px-4 sm:px-8 pt-20 pb-20 text-center md:text-left md:flex md:items-center md:justify-between md:gap-16"
+      >
+        <!-- Teks Pengantar -->
+        <div class="md:w-7/12">
+          <!-- Badge dengan border kuning khas logo -->
+          <span
+            class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-[#FFC700]/10 text-[#b58c00] mb-6 border border-[#FFC700]/30 shadow-sm"
+          >
+            ✨ Kelas Angkatan Baru Terbuka
+          </span>
+
+          <!-- Kombinasi Navy Logo dan Biru Interaktif Modern -->
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#001D4B] leading-none"
+          >
+            Kuasai Keahlian Digital. <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-700 to-[#001D4B]"
+            >
+              Bangun Karier Nyata.
+            </span>
+          </h1>
+          <p
+            class="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto md:mx-0"
+          >
+            Kami membantu Anda menguasai pemrograman dan teknologi modern
+            melalui kelas intensif berbasis proyek. Kurikulum terarah untuk
+            mempersiapkan karier Anda.
+          </p>
+
+          <div
+            class="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start"
+          >
+            <a
+              href="#program"
+              class="w-full sm:w-auto text-center bg-[#001D4B] hover:bg-blue-900 text-white font-bold text-sm px-7 py-4 rounded-xl shadow-lg shadow-[#001D4B]/20 transition-all hover:-translate-y-0.5"
+            >
+              Pilih Program Kursus
+            </a>
+            <a
+              href="#tentang"
+              class="w-full sm:w-auto text-center bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm px-7 py-4 rounded-xl border border-slate-200/80 shadow-sm transition"
+            >
+              Pelajari Metode Belajar →
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual Showcase: Foto Orang Asli Meraih Impian -->
+        <div class="hidden md:block md:w-5/12 mt-16 md:mt-0 relative">
+          <!-- Elemen abstrak dekoratif latar belakang (Biru & Kuning khas Logo) -->
+          <div
+            class="absolute -top-10 -left-10 w-48 h-48 bg-blue-400/20 rounded-full blur-3xl"
+          ></div>
+          <div
+            class="absolute -bottom-10 -right-10 w-48 h-48 bg-[#FFC700]/20 rounded-full blur-3xl"
+          ></div>
+
+          <!-- Bingkai Foto Estetik Modern -->
+          <div
+            class="relative z-10 w-full aspect-[4/3] rounded-3xl overflow-hidden border-4 border-white shadow-2xl shadow-slate-200 group"
+          >
+            <!-- Foto Utama -->
+            <img
+              src="/images/sukses.jpg"
+              alt="Siswa LKP NexGen Meraih Impian"
+              class="w-full h-full object-cover object-center transition-transform duration-550 group-hover:scale-105"
+            />
+
+            <!-- Lapisan Gradasi Lembut di Atas Foto agar Menyatu dengan Tema Navy -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-[#001D4B]/40 via-transparent to-transparent"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. ADVANTAGE SECTION (Fokus Nilai Jual Lembaga Baru) -->
+      <!-- 3. ADVANTAGE SECTION (Dengan Ikon Vektor Modern) -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-8 mb-24">
+        <div
+          class="bg-white border border-slate-200/60 rounded-3xl p-8 md:p-10 shadow-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-y-0 text-center divide-x-0 md:divide-x divide-slate-100"
+        >
+          <!-- Keunggulan 1 -->
+          <div class="px-6 flex flex-col items-center">
+            <div
+              class="w-10 h-10 text-[#001D4B] flex items-center justify-center mb-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <h3 class="text-base font-black text-[#001D4B]">
+              Kurikulum Industri
+            </h3>
+            <p
+              class="text-xs font-semibold text-slate-500 mt-2 leading-relaxed"
+            >
+              Materi disesuaikan dengan kebutuhan kerja saat ini.
+            </p>
+          </div>
+
+          <!-- Keunggulan 2 -->
+          <div class="px-6 flex flex-col items-center">
+            <div
+              class="w-10 h-10 text-[#001D4B] flex items-center justify-center mb-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="20" height="14" x="2" y="3" rx="2" />
+                <line x1="8" x2="16" y1="21" y2="21" />
+                <line x1="12" x2="12" y1="17" y2="21" />
+              </svg>
+            </div>
+            <h3 class="text-base font-black text-[#001D4B]">100% Praktik</h3>
+            <p
+              class="text-xs font-semibold text-slate-500 mt-2 leading-relaxed"
+            >
+              Fokus membangun portofolio ril, bukan teori saja.
+            </p>
+          </div>
+
+          <!-- Keunggulan 3 -->
+          <div class="px-6 flex flex-col items-center">
+            <div
+              class="w-10 h-10 text-[#001D4B] flex items-center justify-center mb-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3 class="text-base font-black text-[#001D4B]">Kelas Intensif</h3>
+            <p
+              class="text-xs font-semibold text-slate-500 mt-2 leading-relaxed"
+            >
+              Kuota siswa dibatasi agar bimbingan lebih maksimal.
+            </p>
+          </div>
+
+          <!-- Keunggulan 4 -->
+          <div class="px-6 flex flex-col items-center">
+            <div
+              class="w-10 h-10 text-[#001D4B] flex items-center justify-center mb-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                <path d="M4 22h16" />
+                <path
+                  d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"
+                />
+                <path
+                  d="M12 2a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4 4 4 0 0 1-4-4V6a4 4 0 0 1 4-4Z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-base font-black text-[#001D4B]">
+              Sertifikat Resmi
+            </h3>
+            <p
+              class="text-xs font-semibold text-slate-500 mt-2 leading-relaxed"
+            >
+              Bukti kompetensi setelah menyelesaikan program.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PROGRAM SECTION (Dengan Ikon Vektor SVG Tajam) -->
+      <section id="program" class="max-w-7xl mx-auto px-4 sm:px-8 py-12">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2
+            class="text-3xl font-black tracking-tight text-[#001D4B] sm:text-4xl"
+          >
+            Program Pelatihan
+          </h2>
+          <p class="mt-3 text-slate-600 text-base">
+            Kurikulum terarah berbasis praktik untuk mempersiapkan portofolio
+            kompetensi Anda.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Card 1: Web Dev -->
+          <div
+            class="bg-white border border-slate-200/60 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+          >
+            <div>
+              <!-- Icon Box: Web/Code Vektor -->
+              <div
+                class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#001D4B] group-hover:text-white transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m18 16 4-4-4-4" />
+                  <path d="m6 8-4 4 4 4" />
+                  <path d="m14.5 4-5 16" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#001D4B]">Web Development</h3>
+              <p class="mt-2.5 text-slate-600 text-sm leading-relaxed">
+                Membangun aplikasi web responsif dari nol menggunakan teknologi
+                modern dan integrasi basis data.
+              </p>
+            </div>
+            <div
+              class="mt-8 pt-4 border-t border-slate-50 flex items-center justify-between text-xs font-bold text-blue-600 group-hover:text-[#001D4B]"
+            >
+              <span>Detail Program</span>
+              <span>→</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Mobile Dev -->
+          <div
+            class="bg-white border border-slate-200/60 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+          >
+            <div>
+              <!-- Icon Box: Smartphone Vektor -->
+              <div
+                class="w-12 h-12 bg-[#FFC700]/10 text-[#b58c00] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#FFC700] group-hover:text-[#001D4B] transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                  <path d="M12 18h.01" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#001D4B]">
+                Mobile Application
+              </h3>
+              <p class="mt-2.5 text-slate-600 text-sm leading-relaxed">
+                Merancang antarmuka layout interaktif dan logika sistem aplikasi
+                untuk perangkat mobile.
+              </p>
+            </div>
+            <div
+              class="mt-8 pt-4 border-t border-slate-50 flex items-center justify-between text-xs font-bold text-blue-600 group-hover:text-[#001D4B]"
+            >
+              <span>Detail Program</span>
+              <span>→</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Jaringan & Keamanan -->
+          <div
+            class="bg-white border border-slate-200/60 rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+          >
+            <div>
+              <!-- Icon Box: Shield Vektor -->
+              <div
+                class="w-12 h-12 bg-slate-100 text-slate-700 rounded-xl flex items-center justify-center mb-6 group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/xl"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 9.7a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 .76-.97l8-2a1 1 0 0 1 .48 0l8 2A1 1 0 0 1 20 6v7z"
+                  />
+                  <line x1="12" x2="12" y1="9" y2="13" />
+                  <line x1="12" x2="12.01" y1="17" y2="17" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-[#001D4B]">
+                Jaringan & Keamanan
+              </h3>
+              <p class="mt-2.5 text-slate-600 text-sm leading-relaxed">
+                Memahami administrasi jaringan, proteksi data, serta konsep
+                dasar keamanan siber.
+              </p>
+            </div>
+            <div
+              class="mt-8 pt-4 border-t border-slate-50 flex items-center justify-between text-xs font-bold text-blue-600 group-hover:text-[#001D4B]"
+            >
+              <span>Detail Program</span>
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
